@@ -32,9 +32,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BoneAgeChecker.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Emgu.CV">
-<<<<<<< HEAD
       <HintPath>.\Emgu.CV.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.CV.UI">
@@ -42,12 +44,6 @@
     </Reference>
     <Reference Include="Emgu.Util">
       <HintPath>.\Emgu.Util.dll</HintPath>
-=======
-      <HintPath>..\..\..\..\..\Desktop\ContourAnalysis\CAProcessing\Emgu.CV.dll</HintPath>
-    </Reference>
-    <Reference Include="Emgu.CV.UI">
-      <HintPath>..\..\..\..\..\Desktop\ContourAnalysis\CAProcessing\Emgu.CV.UI.dll</HintPath>
->>>>>>> 72c61455fa3a4f3fde904b2f446559278e33407f
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -78,14 +74,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-=======
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
->>>>>>> 72c61455fa3a4f3fde904b2f446559278e33407f
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

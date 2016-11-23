@@ -43,5 +43,13 @@ namespace BoneAgeChecker
                 }
 
         }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            this.Visible = false; 
+            Form2 frm = new Form2();
+            frm.Owner = this;
+            frm.Show();
+        }
     }
 }

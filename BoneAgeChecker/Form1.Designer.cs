@@ -160,6 +160,7 @@
             this.btnSubmit.TabIndex = 10;
             this.btnSubmit.Text = "확인";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // Form1
             // 
