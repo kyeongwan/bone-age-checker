@@ -67,3 +67,7 @@ tmp/
 *~.nib
 .settings/
 .loadpath
+
+#visual Studio
+.vs/
+.suo
