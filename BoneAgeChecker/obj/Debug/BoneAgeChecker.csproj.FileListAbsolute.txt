@@ -1,1 +1,13 @@
 c:\users\kang\documents\visual studio 2015\Projects\BoneAgeChecker\BoneAgeChecker\bin\Debug\BoneAgeChecker.exe.config
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\bin\Debug\BoneAgeChecker.exe.config
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\bin\Debug\BoneAgeChecker.exe
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\bin\Debug\BoneAgeChecker.pdb
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\obj\Debug\BoneAgeChecker.csprojResolveAssemblyReference.cache
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\obj\Debug\BoneAgeChecker.Properties.Resources.resources
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\obj\Debug\BoneAgeChecker.csproj.GenerateResource.Cache
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\obj\Debug\BoneAgeChecker.exe
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\obj\Debug\BoneAgeChecker.pdb
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\bin\Debug\Emgu.CV.dll
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\bin\Debug\Emgu.CV.UI.dll
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\bin\Debug\Emgu.Util.dll
+C:\Users\Space_N\Documents\Visual Studio 2015\Projects\bone-age-checker\BoneAgeChecker\obj\Debug\BoneAgeChecker.Form2.resources
