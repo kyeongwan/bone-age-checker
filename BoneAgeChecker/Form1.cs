@@ -17,7 +17,7 @@ namespace BoneAgeChecker
     public partial class Form1 : Form
     {
 
-        Image<Bgr, Byte> frame;
+        Image<Bgr, Byte> iframe;
         public Form1()
         {
             InitializeComponent();
@@ -30,13 +30,13 @@ namespace BoneAgeChecker
             if (ofd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 try
                 {
-                    frame = new Image<Bgr, byte>((Bitmap)Bitmap.FromFile(ofd.FileName));
+                    iframe = new Image<Bgr, byte>((Bitmap)Bitmap.FromFile(ofd.FileName));
                     //ibMain에 로드한 이미지띄우기
-                    frame._EqualizeHist();
-                    frame._EqualizeHist();
-                    frame._EqualizeHist();
-                    ibMain.Image = frame;
-                    
+                    iframe._EqualizeHist();
+                    iframe._EqualizeHist();
+                    iframe._EqualizeHist();
+                    ibMain.Image = iframe;
+
                     xRayImagePath.Text = ofd.FileName;
 
                 }
@@ -50,8 +50,8 @@ namespace BoneAgeChecker
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            this.Visible = false; 
-            Form2 frm = new Form2(frame);
+            this.Visible = false;
+            Form2 frm = new Form2(iframe);
             frm.Owner = this;
             frm.Show();
         }

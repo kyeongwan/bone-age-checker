@@ -29,65 +29,63 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.imageBox1 = new Emgu.CV.UI.ImageBox();
+            this.ibMain = new Emgu.CV.UI.ImageBox();
             this.imageBox2 = new Emgu.CV.UI.ImageBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.nudMinICF = new System.Windows.Forms.NumericUpDown();
+            this.nudMaxACFdesc = new System.Windows.Forms.NumericUpDown();
+            this.nudMinACF = new System.Windows.Forms.NumericUpDown();
+            this.cbAllowAngleMore45 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.cbNoiseFilter = new System.Windows.Forms.CheckBox();
+            this.nudMinDefinition = new System.Windows.Forms.NumericUpDown();
+            this.nudMinContourArea = new System.Windows.Forms.NumericUpDown();
+            this.nudMinContourLength = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.cbShowBinarized = new System.Windows.Forms.CheckBox();
+            this.cbShowContours = new System.Windows.Forms.CheckBox();
+            this.cbShowAngle = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbAdaptiveNoiseFilter = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.Blur = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
+            this.nudAdaptiveThBlockSize = new System.Windows.Forms.NumericUpDown();
+            this.cbBlur = new System.Windows.Forms.CheckBox();
+            this.cbAutoContrast = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ibMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinICF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxACFdesc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinACF)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinDefinition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinContourArea)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinContourLength)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAdaptiveThBlockSize)).BeginInit();
             this.SuspendLayout();
             // 
-            // imageBox1
+            // ibMain
             // 
-            this.imageBox1.Location = new System.Drawing.Point(2, 0);
-            this.imageBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(440, 930);
-            this.imageBox1.TabIndex = 2;
-            this.imageBox1.TabStop = false;
-            this.imageBox1.Click += new System.EventHandler(this.imageBox1_Click);
+            this.ibMain.Location = new System.Drawing.Point(1, 0);
+            this.ibMain.Name = "ibMain";
+            this.ibMain.Size = new System.Drawing.Size(237, 439);
+            this.ibMain.TabIndex = 2;
+            this.ibMain.TabStop = false;
             // 
             // imageBox2
             // 
-            this.imageBox2.Location = new System.Drawing.Point(453, 0);
-            this.imageBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.imageBox2.Location = new System.Drawing.Point(244, 0);
             this.imageBox2.Name = "imageBox2";
-            this.imageBox2.Size = new System.Drawing.Size(442, 930);
+            this.imageBox2.Size = new System.Drawing.Size(238, 439);
             this.imageBox2.TabIndex = 3;
             this.imageBox2.TabStop = false;
             // 
@@ -97,10 +95,9 @@
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(906, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panel1.Location = new System.Drawing.Point(488, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(477, 930);
+            this.panel1.Size = new System.Drawing.Size(257, 439);
             this.panel1.TabIndex = 4;
             // 
             // groupBox4
@@ -108,146 +105,138 @@
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.numericUpDown7);
-            this.groupBox4.Controls.Add(this.numericUpDown6);
-            this.groupBox4.Controls.Add(this.numericUpDown5);
-            this.groupBox4.Controls.Add(this.checkBox8);
-            this.groupBox4.Location = new System.Drawing.Point(11, 670);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox4.Controls.Add(this.nudMinICF);
+            this.groupBox4.Controls.Add(this.nudMaxACFdesc);
+            this.groupBox4.Controls.Add(this.nudMinACF);
+            this.groupBox4.Controls.Add(this.cbAllowAngleMore45);
+            this.groupBox4.Location = new System.Drawing.Point(6, 318);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox4.Size = new System.Drawing.Size(461, 242);
+            this.groupBox4.Size = new System.Drawing.Size(248, 121);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Recognition parameters";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(193, 116);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Location = new System.Drawing.Point(104, 58);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 24);
+            this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 9;
             this.label6.Text = "Min. ICF";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 116);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(6, 58);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 24);
+            this.label5.Size = new System.Drawing.Size(58, 12);
             this.label5.TabIndex = 8;
             this.label5.Text = "Min. ACF";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 34);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(6, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(322, 24);
+            this.label4.Size = new System.Drawing.Size(176, 12);
             this.label4.TabIndex = 7;
             this.label4.Text = "Max. ACF descriptor deviation";
             // 
-            // numericUpDown7
+            // nudMinICF
             // 
-            this.numericUpDown7.DecimalPlaces = 2;
-            this.numericUpDown7.Increment = new decimal(new int[] {
+            this.nudMinICF.DecimalPlaces = 2;
+            this.nudMinICF.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.numericUpDown7.Location = new System.Drawing.Point(197, 146);
-            this.numericUpDown7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.numericUpDown7.Maximum = new decimal(new int[] {
+            this.nudMinICF.Location = new System.Drawing.Point(106, 73);
+            this.nudMinICF.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown7.Minimum = new decimal(new int[] {
+            this.nudMinICF.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             65536});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(104, 35);
-            this.numericUpDown7.TabIndex = 6;
-            this.numericUpDown7.Value = new decimal(new int[] {
-            2,
+            this.nudMinICF.Name = "nudMinICF";
+            this.nudMinICF.Size = new System.Drawing.Size(56, 21);
+            this.nudMinICF.TabIndex = 6;
+            this.nudMinICF.Value = new decimal(new int[] {
+            85,
             0,
             0,
-            65536});
+            131072});
             // 
-            // numericUpDown6
+            // nudMaxACFdesc
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(15, 66);
-            this.numericUpDown6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
+            this.nudMaxACFdesc.Location = new System.Drawing.Point(8, 33);
+            this.nudMaxACFdesc.Maximum = new decimal(new int[] {
             50,
             0,
             0,
             0});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(160, 35);
-            this.numericUpDown6.TabIndex = 5;
+            this.nudMaxACFdesc.Name = "nudMaxACFdesc";
+            this.nudMaxACFdesc.Size = new System.Drawing.Size(86, 21);
+            this.nudMaxACFdesc.TabIndex = 5;
+            this.nudMaxACFdesc.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
-            // numericUpDown5
+            // nudMinACF
             // 
-            this.numericUpDown5.DecimalPlaces = 2;
-            this.numericUpDown5.Increment = new decimal(new int[] {
+            this.nudMinACF.DecimalPlaces = 2;
+            this.nudMinACF.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.numericUpDown5.Location = new System.Drawing.Point(11, 146);
-            this.numericUpDown5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.nudMinACF.Location = new System.Drawing.Point(6, 73);
+            this.nudMinACF.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown5.Minimum = new decimal(new int[] {
+            this.nudMinACF.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             65536});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(104, 35);
-            this.numericUpDown5.TabIndex = 4;
-            this.numericUpDown5.Value = new decimal(new int[] {
-            2,
+            this.nudMinACF.Name = "nudMinACF";
+            this.nudMinACF.Size = new System.Drawing.Size(56, 21);
+            this.nudMinACF.TabIndex = 4;
+            this.nudMinACF.Value = new decimal(new int[] {
+            96,
             0,
             0,
-            65536});
+            131072});
             // 
-            // checkBox8
+            // cbAllowAngleMore45
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(9, 200);
-            this.checkBox8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(213, 28);
-            this.checkBox8.TabIndex = 1;
-            this.checkBox8.Text = "Allow angles > 45";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.cbAllowAngleMore45.AutoSize = true;
+            this.cbAllowAngleMore45.Location = new System.Drawing.Point(5, 100);
+            this.cbAllowAngleMore45.Name = "cbAllowAngleMore45";
+            this.cbAllowAngleMore45.Size = new System.Drawing.Size(125, 16);
+            this.cbAllowAngleMore45.TabIndex = 1;
+            this.cbAllowAngleMore45.Text = "Allow angles > 45";
+            this.cbAllowAngleMore45.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.checkBox3);
-            this.groupBox3.Controls.Add(this.numericUpDown4);
-            this.groupBox3.Controls.Add(this.numericUpDown3);
-            this.groupBox3.Controls.Add(this.numericUpDown2);
-            this.groupBox3.Location = new System.Drawing.Point(11, 418);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Controls.Add(this.cbNoiseFilter);
+            this.groupBox3.Controls.Add(this.nudMinDefinition);
+            this.groupBox3.Controls.Add(this.nudMinContourArea);
+            this.groupBox3.Controls.Add(this.nudMinContourLength);
+            this.groupBox3.Location = new System.Drawing.Point(6, 209);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox3.Size = new System.Drawing.Size(461, 240);
+            this.groupBox3.Size = new System.Drawing.Size(248, 103);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contour filtration";
@@ -255,243 +244,252 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(234, 50);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(126, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(192, 24);
+            this.label3.Size = new System.Drawing.Size(105, 12);
             this.label3.TabIndex = 11;
             this.label3.Text = "Min. contour area";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 50);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(6, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(209, 24);
+            this.label2.Size = new System.Drawing.Size(114, 12);
             this.label2.TabIndex = 10;
             this.label2.Text = "Min. contour length";
             // 
-            // checkBox3
+            // cbNoiseFilter
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(15, 136);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(137, 28);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Noise filter";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.cbNoiseFilter.AutoSize = true;
+            this.cbNoiseFilter.Location = new System.Drawing.Point(8, 68);
+            this.cbNoiseFilter.Name = "cbNoiseFilter";
+            this.cbNoiseFilter.Size = new System.Drawing.Size(84, 16);
+            this.cbNoiseFilter.TabIndex = 2;
+            this.cbNoiseFilter.Text = "Noise filter";
+            this.cbNoiseFilter.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown4
+            // nudMinDefinition
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(11, 180);
-            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.nudMinDefinition.Location = new System.Drawing.Point(102, 67);
+            this.nudMinDefinition.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(149, 35);
-            this.numericUpDown4.TabIndex = 9;
-            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
+            this.nudMinDefinition.Name = "nudMinDefinition";
+            this.nudMinDefinition.Size = new System.Drawing.Size(80, 21);
+            this.nudMinDefinition.TabIndex = 9;
+            this.nudMinDefinition.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
-            // numericUpDown3
+            // nudMinContourArea
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(238, 80);
-            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.nudMinContourArea.Location = new System.Drawing.Point(128, 40);
+            this.nudMinContourArea.Maximum = new decimal(new int[] {
             400,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(149, 35);
-            this.numericUpDown3.TabIndex = 8;
+            this.nudMinContourArea.Name = "nudMinContourArea";
+            this.nudMinContourArea.Size = new System.Drawing.Size(80, 21);
+            this.nudMinContourArea.TabIndex = 8;
+            this.nudMinContourArea.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
-            // numericUpDown2
+            // nudMinContourLength
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(15, 80);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.nudMinContourLength.Location = new System.Drawing.Point(8, 40);
+            this.nudMinContourLength.Maximum = new decimal(new int[] {
             400,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(178, 35);
-            this.numericUpDown2.TabIndex = 7;
+            this.nudMinContourLength.Name = "nudMinContourLength";
+            this.nudMinContourLength.Size = new System.Drawing.Size(96, 21);
+            this.nudMinContourLength.TabIndex = 7;
+            this.nudMinContourLength.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox6);
-            this.groupBox2.Controls.Add(this.checkBox5);
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Location = new System.Drawing.Point(11, 228);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Controls.Add(this.cbShowBinarized);
+            this.groupBox2.Controls.Add(this.cbShowContours);
+            this.groupBox2.Controls.Add(this.cbShowAngle);
+            this.groupBox2.Location = new System.Drawing.Point(6, 114);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox2.Size = new System.Drawing.Size(461, 178);
+            this.groupBox2.Size = new System.Drawing.Size(248, 89);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View";
             // 
-            // checkBox6
+            // cbShowBinarized
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(11, 128);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(186, 28);
-            this.checkBox6.TabIndex = 5;
-            this.checkBox6.Text = "Show binarized";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.cbShowBinarized.AutoSize = true;
+            this.cbShowBinarized.Location = new System.Drawing.Point(6, 64);
+            this.cbShowBinarized.Name = "cbShowBinarized";
+            this.cbShowBinarized.Size = new System.Drawing.Size(112, 16);
+            this.cbShowBinarized.TabIndex = 5;
+            this.cbShowBinarized.Text = "Show binarized";
+            this.cbShowBinarized.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // cbShowContours
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(9, 84);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(187, 28);
-            this.checkBox5.TabIndex = 4;
-            this.checkBox5.Text = "Show contours";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.cbShowContours.AutoSize = true;
+            this.cbShowContours.Location = new System.Drawing.Point(5, 42);
+            this.cbShowContours.Name = "cbShowContours";
+            this.cbShowContours.Size = new System.Drawing.Size(109, 16);
+            this.cbShowContours.TabIndex = 4;
+            this.cbShowContours.Text = "Show contours";
+            this.cbShowContours.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // cbShowAngle
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(11, 40);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(160, 28);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "Show angles";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.cbShowAngle.AutoSize = true;
+            this.cbShowAngle.Location = new System.Drawing.Point(6, 20);
+            this.cbShowAngle.Name = "cbShowAngle";
+            this.cbShowAngle.Size = new System.Drawing.Size(98, 16);
+            this.cbShowAngle.TabIndex = 3;
+            this.cbShowAngle.Text = "Show angles";
+            this.cbShowAngle.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbAdaptiveNoiseFilter);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
-            this.groupBox1.Controls.Add(this.Blur);
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Location = new System.Drawing.Point(7, 26);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Controls.Add(this.nudAdaptiveThBlockSize);
+            this.groupBox1.Controls.Add(this.cbBlur);
+            this.groupBox1.Controls.Add(this.cbAutoContrast);
+            this.groupBox1.Location = new System.Drawing.Point(4, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox1.Size = new System.Drawing.Size(464, 190);
+            this.groupBox1.Size = new System.Drawing.Size(250, 95);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Source";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter_1);
             // 
+            // cbAdaptiveNoiseFilter
+            // 
+            this.cbAdaptiveNoiseFilter.AutoSize = true;
+            this.cbAdaptiveNoiseFilter.Location = new System.Drawing.Point(108, 65);
+            this.cbAdaptiveNoiseFilter.Name = "cbAdaptiveNoiseFilter";
+            this.cbAdaptiveNoiseFilter.Size = new System.Drawing.Size(84, 16);
+            this.cbAdaptiveNoiseFilter.TabIndex = 5;
+            this.cbAdaptiveNoiseFilter.Text = "Noise filter";
+            this.cbAdaptiveNoiseFilter.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 98);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(5, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(313, 24);
+            this.label1.Size = new System.Drawing.Size(171, 12);
             this.label1.TabIndex = 4;
             this.label1.Text = "Adaptive threshold block size";
             // 
-            // numericUpDown1
+            // nudAdaptiveThBlockSize
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(15, 128);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(104, 35);
-            this.numericUpDown1.TabIndex = 3;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.nudAdaptiveThBlockSize.Location = new System.Drawing.Point(8, 64);
+            this.nudAdaptiveThBlockSize.Name = "nudAdaptiveThBlockSize";
+            this.nudAdaptiveThBlockSize.Size = new System.Drawing.Size(80, 21);
+            this.nudAdaptiveThBlockSize.TabIndex = 3;
+            this.nudAdaptiveThBlockSize.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
-            // Blur
+            // cbBlur
             // 
-            this.Blur.AutoSize = true;
-            this.Blur.Location = new System.Drawing.Point(201, 42);
-            this.Blur.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Blur.Name = "Blur";
-            this.Blur.Size = new System.Drawing.Size(66, 28);
-            this.Blur.TabIndex = 1;
-            this.Blur.Text = "Blur";
-            this.Blur.UseVisualStyleBackColor = true;
-            this.Blur.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.cbBlur.AutoSize = true;
+            this.cbBlur.Location = new System.Drawing.Point(108, 21);
+            this.cbBlur.Name = "cbBlur";
+            this.cbBlur.Size = new System.Drawing.Size(46, 16);
+            this.cbBlur.TabIndex = 1;
+            this.cbBlur.Text = "Blur";
+            this.cbBlur.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cbAutoContrast
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 42);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(171, 28);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Auto contrast";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.cbAutoContrast.AutoSize = true;
+            this.cbAutoContrast.Location = new System.Drawing.Point(7, 21);
+            this.cbAutoContrast.Name = "cbAutoContrast";
+            this.cbAutoContrast.Size = new System.Drawing.Size(98, 16);
+            this.cbAutoContrast.TabIndex = 0;
+            this.cbAutoContrast.Text = "Auto contrast";
+            this.cbAutoContrast.UseVisualStyleBackColor = true;
+            this.cbAutoContrast.CheckedChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged_1);
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 813);
+            this.ClientSize = new System.Drawing.Size(745, 442);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.imageBox2);
-            this.Controls.Add(this.imageBox1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Controls.Add(this.ibMain);
             this.Name = "Form2";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ibMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinICF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxACFdesc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinACF)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinDefinition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinContourArea)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinContourLength)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAdaptiveThBlockSize)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Emgu.CV.UI.ImageBox imageBox1;
+        private Emgu.CV.UI.ImageBox ibMain;
         private Emgu.CV.UI.ImageBox imageBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbAutoContrast;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.NumericUpDown nudMinICF;
+        private System.Windows.Forms.NumericUpDown nudMaxACFdesc;
+        private System.Windows.Forms.NumericUpDown nudMinACF;
+        private System.Windows.Forms.CheckBox cbAllowAngleMore45;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.NumericUpDown nudMinDefinition;
+        private System.Windows.Forms.NumericUpDown nudMinContourArea;
+        private System.Windows.Forms.NumericUpDown nudMinContourLength;
+        private System.Windows.Forms.CheckBox cbShowBinarized;
+        private System.Windows.Forms.CheckBox cbShowContours;
+        private System.Windows.Forms.CheckBox cbShowAngle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox Blur;
+        private System.Windows.Forms.NumericUpDown nudAdaptiveThBlockSize;
+        private System.Windows.Forms.CheckBox cbNoiseFilter;
+        private System.Windows.Forms.CheckBox cbBlur;
+        private System.Windows.Forms.CheckBox cbAdaptiveNoiseFilter;
     }
 }
