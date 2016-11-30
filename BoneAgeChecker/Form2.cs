@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace BoneAgeChecker
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        Image<Bgr, Byte> userFrame;
+        public Form2(Image<Bgr, Byte> userFrame)
         {
             InitializeComponent();
+
+            this.userFrame = userFrame;
+            imageBox1.Image = userFrame;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -63,6 +69,11 @@ namespace BoneAgeChecker
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void imageBox1_Click(object sender, EventArgs e)
         {
 
         }

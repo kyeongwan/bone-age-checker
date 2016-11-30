@@ -32,7 +32,11 @@ namespace BoneAgeChecker
                 {
                     frame = new Image<Bgr, byte>((Bitmap)Bitmap.FromFile(ofd.FileName));
                     //ibMain에 로드한 이미지띄우기
+                    frame._EqualizeHist();
+                    frame._EqualizeHist();
+                    frame._EqualizeHist();
                     ibMain.Image = frame;
+                    
                     xRayImagePath.Text = ofd.FileName;
 
                 }
@@ -47,7 +51,7 @@ namespace BoneAgeChecker
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             this.Visible = false; 
-            Form2 frm = new Form2();
+            Form2 frm = new Form2(frame);
             frm.Owner = this;
             frm.Show();
         }
