@@ -74,12 +74,12 @@
             this.SuspendLayout();
             // 
             // ibMain
-            // 
             this.ibMain.Location = new System.Drawing.Point(1, 0);
             this.ibMain.Name = "ibMain";
             this.ibMain.Size = new System.Drawing.Size(237, 439);
             this.ibMain.TabIndex = 2;
             this.ibMain.TabStop = false;
+            this.ibMain.Paint += new System.Windows.Forms.PaintEventHandler(this.ibMain_Paint);
             // 
             // imageBox2
             // 
@@ -124,6 +124,7 @@
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 9;
             this.label6.Text = "Min. ICF";
+
             // 
             // label5
             // 
@@ -170,6 +171,7 @@
             0,
             0,
             131072});
+            this.nudMinICF.ValueChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // nudMaxACFdesc
             // 
@@ -187,6 +189,7 @@
             0,
             0,
             0});
+            this.nudMaxACFdesc.ValueChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // nudMinACF
             // 
@@ -215,6 +218,7 @@
             0,
             0,
             131072});
+            this.nudMinACF.ValueChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // cbAllowAngleMore45
             // 
@@ -225,6 +229,7 @@
             this.cbAllowAngleMore45.TabIndex = 1;
             this.cbAllowAngleMore45.Text = "Allow angles > 45";
             this.cbAllowAngleMore45.UseVisualStyleBackColor = true;
+            this.cbAllowAngleMore45.CheckedChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -285,6 +290,7 @@
             0,
             0,
             0});
+            this.nudMinDefinition.ValueChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // nudMinContourArea
             // 
@@ -302,6 +308,7 @@
             0,
             0,
             0});
+            this.nudMinContourArea.ValueChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // nudMinContourLength
             // 
@@ -319,6 +326,7 @@
             0,
             0,
             0});
+            this.nudMinContourLength.ValueChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -361,6 +369,7 @@
             this.cbShowAngle.TabIndex = 3;
             this.cbShowAngle.Text = "Show angles";
             this.cbShowAngle.UseVisualStyleBackColor = true;
+            this.cbShowAngle.CheckedChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -386,6 +395,7 @@
             this.cbAdaptiveNoiseFilter.TabIndex = 5;
             this.cbAdaptiveNoiseFilter.Text = "Noise filter";
             this.cbAdaptiveNoiseFilter.UseVisualStyleBackColor = true;
+            this.cbAdaptiveNoiseFilter.CheckedChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // label1
             // 
@@ -407,6 +417,7 @@
             0,
             0,
             0});
+            this.nudAdaptiveThBlockSize.ValueChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // cbBlur
             // 
@@ -417,6 +428,7 @@
             this.cbBlur.TabIndex = 1;
             this.cbBlur.Text = "Blur";
             this.cbBlur.UseVisualStyleBackColor = true;
+            this.cbBlur.CheckedChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // cbAutoContrast
             // 
