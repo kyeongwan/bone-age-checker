@@ -19,7 +19,7 @@ using Emgu.CV.Structure;
 using System.Drawing;
 using System.Threading.Tasks;
 
-namespace ContourAnalysisNS
+namespace BoneAgeChecker
 {
     public class ImageProcessor
     {

@@ -2,7 +2,7 @@
 using Emgu.CV.Structure;
 using Emgu.CV;
 
-namespace ContourAnalysisNS
+namespace BoneAgeChecker
 {
     public static class TemplateGenerator
     {

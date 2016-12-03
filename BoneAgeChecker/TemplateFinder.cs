@@ -12,7 +12,7 @@
 
 using System;
 
-namespace ContourAnalysisNS
+namespace BoneAgeChecker
 {
     public class TemplateFinder
     {

@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace ContourAnalysisNS
+namespace BoneAgeChecker
 {
     [Serializable]
     public class Template

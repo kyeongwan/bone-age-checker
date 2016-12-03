@@ -1,4 +1,4 @@
-﻿namespace ContourAnalysisDemo
+﻿namespace BoneAgeChecker
 {
     partial class TemplateEditor
     {
