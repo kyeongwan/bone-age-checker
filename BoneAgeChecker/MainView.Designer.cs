@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lbRecognized = new System.Windows.Forms.Label();
             this.lbContoursCount = new System.Windows.Forms.Label();
@@ -59,8 +61,7 @@
             this.cbAutoContrast = new System.Windows.Forms.CheckBox();
             this.ibSample = new Emgu.CV.UI.ImageBox();
             this.ibMain = new Emgu.CV.UI.ImageBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -95,6 +96,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 1000);
             this.panel1.TabIndex = 4;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(260, 896);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(225, 54);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Process";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(11, 896);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(225, 54);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox5
             // 
@@ -355,7 +376,7 @@
             this.nudMinContourLength.Size = new System.Drawing.Size(179, 35);
             this.nudMinContourLength.TabIndex = 7;
             this.nudMinContourLength.Value = new decimal(new int[] {
-            15,
+            30,
             0,
             0,
             0});
@@ -438,6 +459,11 @@
             // 
             this.nudAdaptiveThBlockSize.Location = new System.Drawing.Point(15, 128);
             this.nudAdaptiveThBlockSize.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.nudAdaptiveThBlockSize.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.nudAdaptiveThBlockSize.Name = "nudAdaptiveThBlockSize";
             this.nudAdaptiveThBlockSize.Size = new System.Drawing.Size(148, 35);
             this.nudAdaptiveThBlockSize.TabIndex = 3;
@@ -496,25 +522,13 @@
             this.ibMain.TabStop = false;
             this.ibMain.Paint += new System.Windows.Forms.PaintEventHandler(this.ibMain_Paint);
             // 
-            // button1
+            // backgroundWorker1
             // 
-            this.button1.Location = new System.Drawing.Point(11, 896);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(225, 54);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(260, 896);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(225, 54);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Process";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // MainView
             // 
@@ -590,5 +604,6 @@
         private System.Windows.Forms.Label lbContoursCount;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

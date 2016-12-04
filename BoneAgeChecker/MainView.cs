@@ -10,6 +10,7 @@ using System.IO;
 using ContourAnalysisNS;
 using System.Reflection;
 using System.Resources;
+using System.ComponentModel;
 
 namespace BoneAgeChecker
 {
@@ -26,6 +27,9 @@ namespace BoneAgeChecker
         int sampleAge;
         bool showAngle;
         String templateFile;
+        double resultAge;
+
+        AlertForm alert;
 
         //   Image<Bgr, Byte> userFrame;
         public MainView(Image<Bgr, Byte> userFrame, String name, int gender, DateTime birthday)
@@ -51,10 +55,10 @@ namespace BoneAgeChecker
             age = calcAge();
 
             if (sampleAge == 3)
-                    sampleAge = 4;
-                else if (sampleAge > 20)
+                sampleAge = 4;
+            else if (sampleAge > 20)
                 sampleAge = 19;
-            
+
 
             // 가져올 아이콘 이름
             string iconName = string.Format("m{0}y", sampleAge);
@@ -63,7 +67,7 @@ namespace BoneAgeChecker
             // 리소스 관리자를 생성하고
             ResourceManager rm = new ResourceManager("BoneAgeChecker.Properties.Resources", thisAssembly);
 
-            ibSample.Image = new Image<Bgr, byte>((Bitmap) rm.GetObject(iconName));
+            ibSample.Image = new Image<Bgr, byte>((Bitmap)rm.GetObject(iconName));
 
 
             System.Diagnostics.Trace.WriteLine(name + " / " + gender);
@@ -106,7 +110,7 @@ namespace BoneAgeChecker
 
             return age;
         }
-     
+
 
         void Application_Idle(object sender, EventArgs e)
         {
@@ -152,7 +156,7 @@ namespace BoneAgeChecker
             Font font = new Font(Font.FontFamily, 24);//16
 
             e.Graphics.DrawString(name + "(" + age + "y)", new Font(Font.FontFamily, 16), Brushes.Yellow, new PointF(1, 1));
-                
+
 
             Brush bgBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));
             Brush foreBrush = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
@@ -181,8 +185,8 @@ namespace BoneAgeChecker
                     //e.Graphics.DrawString(text, font, bgBrush, new PointF(p1.X + 1 - font.Height / 3, p1.Y + 1 - font.Height));
                     //e.Graphics.DrawString(text, font, foreBrush, new PointF(p1.X - font.Height / 3, p1.Y - font.Height));
                 }
-           
-           
+
+
         }
 
         private void LoadTemplates(string fileName)
@@ -231,7 +235,7 @@ namespace BoneAgeChecker
                 //   captureFromCam = cbCaptureFromCam.Checked;
                 //   btLoadImage.Enabled = !captureFromCam;
                 //   cbCamResolution.Enabled = captureFromCam;
-                processor.finder.maxRotateAngle =  Math.PI / 4;
+                processor.finder.maxRotateAngle = Math.PI / 4;
                 processor.minContourArea = (int)nudMinContourArea.Value;
                 processor.minContourLength = (int)nudMinContourLength.Value;
                 processor.finder.maxACFDescriptorDeviation = (int)nudMaxACFdesc.Value;
@@ -276,7 +280,112 @@ namespace BoneAgeChecker
 
         private void button2_Click(object sender, EventArgs e)
         {
+            double tmp = 0;
+            List<int> agelist = new List<int>();
+            foreach (FoundTemplateDesc found in processor.foundTemplates)
+            {
+                int tage = Int32.Parse((found.template.name.Substring(0, 2).Replace("y", "").Replace("m", "")));
+                // if ((tage - age < 6 && tage - age > 0)||(age-tage < 6 && age-tage > 0))
+                {
+                    agelist.Add(tage);
+                    System.Console.WriteLine(tage);
+                }
+            }
+            agelist.Sort();
+            System.Console.WriteLine(agelist.Count + " ////// ");
+            try
+            {
+                int cnt = 0;
+                for (int i = (int)(agelist.Count * 0.3); i < agelist.Count; i++)
+                {
+                    System.Console.WriteLine(agelist[i] + " /  " + i);
+                    tmp += agelist[i];
+                    cnt++;
+                }
+                tmp /= cnt;
+            }
+            catch (Exception ex)
+            {
+                tmp = age;
+            }
 
+
+            resultAge = (tmp * 0.7) + (age * 0.3);
+            System.Console.WriteLine(resultAge);
+
+            if (backgroundWorker1.IsBusy != true)
+            {
+                // create a new instance of the alert form
+                alert = new AlertForm();
+                // event handler for the Cancel button in AlertForm
+                alert.Canceled += new EventHandler<EventArgs>(buttonCancel_Click);
+                alert.Show();
+                // Start the asynchronous operation.
+                backgroundWorker1.RunWorkerAsync();
+            }
+
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.WorkerSupportsCancellation == true)
+            {
+                // Cancel the asynchronous operation.
+                backgroundWorker1.CancelAsync();
+                // Close the AlertForm
+                alert.Close();
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                else
+                {
+                    // Perform a time consuming operation and report progress.
+                    worker.ReportProgress(i * 10);
+                    System.Threading.Thread.Sleep(500);
+                }
+            }
+        }
+
+        // This event handler updates the progress.
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            // Show the progress in main form (GUI)
+            //labelResult.Text = (e.ProgressPercentage.ToString() + "%");
+            // Pass the progress to AlertForm label and progressbar
+            alert.Message = "In progress, please wait... " + e.ProgressPercentage.ToString() + "%";
+            alert.ProgressValue = e.ProgressPercentage;
+        }
+
+        // This event handler deals with the results of the background operation.
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled == true)
+            {
+                MessageBox.Show("Cancle.",
+                 "Cancle");
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Error requried.",
+                "Error");
+            }
+            else
+            {
+                MessageBox.Show("Real Age: " + age + "\nResult Age: "+resultAge.ToString("N2"), "Result");
+            }
+            // Close the AlertForm
+            alert.Close();
         }
     }
 }

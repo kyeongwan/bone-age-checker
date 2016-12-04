@@ -117,6 +117,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlertForm.designer.cs">
+      <DependentUpon>AlertForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InitView.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -141,6 +147,9 @@
       <DependentUpon>TemplateEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="TemplateGenerator.cs" />
+    <EmbeddedResource Include="AlertForm.resx">
+      <DependentUpon>AlertForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InitView.resx">
       <DependentUpon>InitView.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -187,24 +196,6 @@
     <Content Include="Emgu.Util.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="img\f0y.jpg" />
-    <None Include="img\f1y.jpg" />
-    <None Include="img\f2y.jpg" />
-    <None Include="img\f3y.jpg" />
-    <None Include="img\f4y.jpg" />
-    <None Include="img\f5y.jpg" />
-    <None Include="img\f6y.jpg" />
-    <None Include="img\f7y.jpg" />
-    <None Include="img\f8y.jpg" />
-    <None Include="img\f10y.jpg" />
-    <None Include="img\f11y.jpg" />
-    <None Include="img\f12y.jpg" />
-    <None Include="img\f13y.jpg" />
-    <None Include="img\f14y.jpg" />
-    <None Include="img\f15y.jpg" />
-    <None Include="img\f16y.jpg" />
-    <None Include="img\f17y.jpg" />
-    <None Include="img\f18y.jpg" />
     <None Include="img\m0y.jpg" />
     <None Include="img\m1y.jpg" />
     <None Include="img\m2y.jpg" />
