@@ -30,18 +30,11 @@ namespace BoneAgeChecker
         double resultAge;
 
         AlertForm alert;
-
-        //   Image<Bgr, Byte> userFrame;
+        
         public MainView(Image<Bgr, Byte> userFrame, String name, int gender, DateTime birthday)
-        {/*
-            InitializeComponent();
-
-            this.userFrame = userFrame;
-            imageBox1.Image = userFrame;
-            */
+        {
 
             InitializeComponent();
-            //create image preocessor
             processor = new ImageProcessor();
 
             this.name = name;
@@ -59,34 +52,18 @@ namespace BoneAgeChecker
             else if (sampleAge > 20)
                 sampleAge = 19;
 
-
-            // 가져올 아이콘 이름
             string iconName = string.Format("m{0}y", sampleAge);
-            // 현재 실행 중인 어셈블리를 구해서
             Assembly thisAssembly = Assembly.GetExecutingAssembly();
-            // 리소스 관리자를 생성하고
             ResourceManager rm = new ResourceManager("BoneAgeChecker.Properties.Resources", thisAssembly);
-
             ibSample.Image = new Image<Bgr, byte>((Bitmap)rm.GetObject(iconName));
-
-
-            System.Diagnostics.Trace.WriteLine(name + " / " + gender);
+            //System.Diagnostics.Trace.WriteLine(name + " / " + gender);
 
             frame = userFrame;
             ibMain.Image = userFrame;
 
             templateFile = AppDomain.CurrentDomain.BaseDirectory + "\\bone.bin";
             LoadTemplates(templateFile);
-            //start capture from cam
-            // StartCapture();
-            //apply settings
-
-
-            /**
-             *   todo
-             *      cam부분 template제외 code 입력
-             *      벗 바이너리 제외 작동 안함.
-             */
+         
             ApplySettings();
             //
             Application.Idle += new EventHandler(Application_Idle);
@@ -107,7 +84,6 @@ namespace BoneAgeChecker
             }
             else
                 age = DateTime.Now.Year - birthday.Year - 1;
-
             return age;
         }
 
@@ -122,10 +98,8 @@ namespace BoneAgeChecker
         {
             try
             {
-
-                //
                 processor.ProcessImage(frame);
-                //
+                
                 if (cbShowBinarized.Checked)
                     ibMain.Image = processor.binarizedFrame;
                 else
@@ -161,12 +135,12 @@ namespace BoneAgeChecker
             Brush bgBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));
             Brush foreBrush = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
             Pen borderPen = new Pen(Color.FromArgb(150, 0, 255, 0));
-            //
+            
             if (cbShowContours.Checked)
                 foreach (var contour in processor.contours)
                     if (contour.Total > 1)
                         e.Graphics.DrawLines(Pens.Red, contour.ToArray());
-            //
+            
             lock (processor.foundTemplates)
                 foreach (FoundTemplateDesc found in processor.foundTemplates)
                 {
@@ -178,12 +152,7 @@ namespace BoneAgeChecker
 
                     Rectangle foundRect = found.sample.contour.SourceBoundingRect;
                     Point p1 = new Point((foundRect.Left + foundRect.Right) / 2, foundRect.Top);
-                    string text = found.template.name;
-                    if (showAngle)
-                        text += string.Format("\r\nangle={0:000}°\r\nscale={1:0.0}", 180 * found.angle / Math.PI, found.scale);
                     e.Graphics.DrawRectangle(borderPen, foundRect);
-                    //e.Graphics.DrawString(text, font, bgBrush, new PointF(p1.X + 1 - font.Height / 3, p1.Y + 1 - font.Height));
-                    //e.Graphics.DrawString(text, font, foreBrush, new PointF(p1.X - font.Height / 3, p1.Y - font.Height));
                 }
 
 
@@ -232,9 +201,6 @@ namespace BoneAgeChecker
             {
                 processor.equalizeHist = cbAutoContrast.Checked;
                 showAngle = false;
-                //   captureFromCam = cbCaptureFromCam.Checked;
-                //   btLoadImage.Enabled = !captureFromCam;
-                //   cbCamResolution.Enabled = captureFromCam;
                 processor.finder.maxRotateAngle = Math.PI / 4;
                 processor.minContourArea = (int)nudMinContourArea.Value;
                 processor.minContourLength = (int)nudMinContourLength.Value;
@@ -247,22 +213,6 @@ namespace BoneAgeChecker
                 nudMinDefinition.Enabled = processor.noiseFilter;
                 processor.adaptiveThresholdBlockSize = (int)nudAdaptiveThBlockSize.Value;
                 processor.adaptiveThresholdParameter = cbAdaptiveNoiseFilter.Checked ? 1.5 : 0.5;
-                //cam resolution
-                System.Console.WriteLine(showAngle + " / " + processor.equalizeHist + " / " + processor.blur);
-                /*
-                string[] parts = cbCamResolution.Text.ToLower().Split('x');
-                if (parts.Length == 2)
-                {
-                    int camWidth = int.Parse(parts[0]);
-                    int camHeight = int.Parse(parts[1]);
-                    if (this.camHeight != camHeight || this.camWidth != camWidth)
-                    {
-                        this.camWidth = camWidth;
-                        this.camHeight = camHeight;
-                        ApplyCamSettings();
-                    }
-                }
-                */
             }
             catch (Exception ex)
             {
@@ -292,7 +242,6 @@ namespace BoneAgeChecker
                 }
             }
             agelist.Sort();
-            System.Console.WriteLine(agelist.Count + " ////// ");
             try
             {
                 int cnt = 0;
@@ -307,20 +256,17 @@ namespace BoneAgeChecker
             catch (Exception ex)
             {
                 tmp = age;
+                System.Console.WriteLine(ex.ToString());
             }
-
 
             resultAge = (tmp * 0.7) + (age * 0.3);
             System.Console.WriteLine(resultAge);
 
             if (backgroundWorker1.IsBusy != true)
             {
-                // create a new instance of the alert form
                 alert = new AlertForm();
-                // event handler for the Cancel button in AlertForm
                 alert.Canceled += new EventHandler<EventArgs>(buttonCancel_Click);
                 alert.Show();
-                // Start the asynchronous operation.
                 backgroundWorker1.RunWorkerAsync();
             }
 
@@ -330,9 +276,7 @@ namespace BoneAgeChecker
         {
             if (backgroundWorker1.WorkerSupportsCancellation == true)
             {
-                // Cancel the asynchronous operation.
                 backgroundWorker1.CancelAsync();
-                // Close the AlertForm
                 alert.Close();
             }
         }
@@ -350,41 +294,32 @@ namespace BoneAgeChecker
                 }
                 else
                 {
-                    // Perform a time consuming operation and report progress.
                     worker.ReportProgress(i * 10);
                     System.Threading.Thread.Sleep(500);
                 }
             }
         }
 
-        // This event handler updates the progress.
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            // Show the progress in main form (GUI)
-            //labelResult.Text = (e.ProgressPercentage.ToString() + "%");
-            // Pass the progress to AlertForm label and progressbar
             alert.Message = "In progress, please wait... " + e.ProgressPercentage.ToString() + "%";
             alert.ProgressValue = e.ProgressPercentage;
         }
 
-        // This event handler deals with the results of the background operation.
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled == true)
             {
-                MessageBox.Show("Cancle.",
-                 "Cancle");
+                MessageBox.Show("Cancle.", "Cancle");
             }
             else if (e.Error != null)
             {
-                MessageBox.Show("Error requried.",
-                "Error");
+                MessageBox.Show("Error requried.","Error");
             }
             else
             {
                 MessageBox.Show("Real Age: " + age + "\nResult Age: "+resultAge.ToString("N2"), "Result");
             }
-            // Close the AlertForm
             alert.Close();
         }
     }
