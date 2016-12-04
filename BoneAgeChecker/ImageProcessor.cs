@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Emgu.CV;
+using ContourAnalysisNS;
 using Emgu.CV.Structure;
 using System.Drawing;
 using System.Threading.Tasks;

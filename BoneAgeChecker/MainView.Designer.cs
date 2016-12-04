@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
-            this.ibMain = new Emgu.CV.UI.ImageBox();
-            this.imageBox2 = new Emgu.CV.UI.ImageBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lbRecognized = new System.Windows.Forms.Label();
@@ -59,8 +57,10 @@
             this.nudAdaptiveThBlockSize = new System.Windows.Forms.NumericUpDown();
             this.cbBlur = new System.Windows.Forms.CheckBox();
             this.cbAutoContrast = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.ibMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).BeginInit();
+            this.ibSample = new Emgu.CV.UI.ImageBox();
+            this.ibMain = new Emgu.CV.UI.ImageBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -74,48 +74,37 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdaptiveThBlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ibSample)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ibMain)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ibMain
-            // 
-            this.ibMain.Location = new System.Drawing.Point(1, 0);
-            this.ibMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ibMain.Name = "ibMain";
-            this.ibMain.Size = new System.Drawing.Size(407, 549);
-            this.ibMain.TabIndex = 2;
-            this.ibMain.TabStop = false;
-            this.ibMain.Paint += new System.Windows.Forms.PaintEventHandler(this.ibMain_Paint);
-            // 
-            // imageBox2
-            // 
-            this.imageBox2.Location = new System.Drawing.Point(414, 0);
-            this.imageBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.imageBox2.Name = "imageBox2";
-            this.imageBox2.Size = new System.Drawing.Size(399, 549);
-            this.imageBox2.TabIndex = 3;
-            this.imageBox2.TabStop = false;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(819, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(1330, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.MaximumSize = new System.Drawing.Size(520, 1000);
+            this.panel1.MinimumSize = new System.Drawing.Size(520, 1000);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(318, 576);
+            this.panel1.Size = new System.Drawing.Size(520, 1000);
             this.panel1.TabIndex = 4;
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.lbRecognized);
             this.groupBox5.Controls.Add(this.lbContoursCount);
-            this.groupBox5.Location = new System.Drawing.Point(7, 472);
+            this.groupBox5.Location = new System.Drawing.Point(11, 755);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(292, 77);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox5.Size = new System.Drawing.Size(474, 123);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Contour Status";
@@ -123,18 +112,20 @@
             // lbRecognized
             // 
             this.lbRecognized.AutoSize = true;
-            this.lbRecognized.Location = new System.Drawing.Point(7, 52);
+            this.lbRecognized.Location = new System.Drawing.Point(11, 83);
+            this.lbRecognized.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbRecognized.Name = "lbRecognized";
-            this.lbRecognized.Size = new System.Drawing.Size(160, 15);
+            this.lbRecognized.Size = new System.Drawing.Size(248, 24);
             this.lbRecognized.TabIndex = 5;
             this.lbRecognized.Text = "Recognized Contours: ";
             // 
             // lbContoursCount
             // 
             this.lbContoursCount.AutoSize = true;
-            this.lbContoursCount.Location = new System.Drawing.Point(7, 21);
+            this.lbContoursCount.Location = new System.Drawing.Point(11, 34);
+            this.lbContoursCount.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbContoursCount.Name = "lbContoursCount";
-            this.lbContoursCount.Size = new System.Drawing.Size(114, 15);
+            this.lbContoursCount.Size = new System.Drawing.Size(179, 24);
             this.lbContoursCount.TabIndex = 4;
             this.lbContoursCount.Text = "Total Contours: ";
             // 
@@ -146,11 +137,11 @@
             this.groupBox4.Controls.Add(this.nudMinICF);
             this.groupBox4.Controls.Add(this.nudMaxACFdesc);
             this.groupBox4.Controls.Add(this.nudMinACF);
-            this.groupBox4.Location = new System.Drawing.Point(7, 377);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Location = new System.Drawing.Point(11, 603);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(292, 88);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox4.Size = new System.Drawing.Size(474, 141);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Recognition parameters";
@@ -158,27 +149,30 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(222, 22);
+            this.label6.Location = new System.Drawing.Point(361, 35);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 15);
+            this.label6.Size = new System.Drawing.Size(92, 24);
             this.label6.TabIndex = 9;
             this.label6.Text = "Min. ICF";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(150, 22);
+            this.label5.Location = new System.Drawing.Point(244, 35);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
+            this.label5.Size = new System.Drawing.Size(103, 24);
             this.label5.TabIndex = 8;
             this.label5.Text = "Min. ACF";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 21);
+            this.label4.Location = new System.Drawing.Point(11, 34);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 15);
+            this.label4.Size = new System.Drawing.Size(211, 24);
             this.label4.TabIndex = 7;
             this.label4.Text = "Max. ACF deviation";
             // 
@@ -190,8 +184,8 @@
             0,
             0,
             131072});
-            this.nudMinICF.Location = new System.Drawing.Point(223, 41);
-            this.nudMinICF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudMinICF.Location = new System.Drawing.Point(362, 66);
+            this.nudMinICF.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nudMinICF.Maximum = new decimal(new int[] {
             1,
             0,
@@ -203,7 +197,7 @@
             0,
             65536});
             this.nudMinICF.Name = "nudMinICF";
-            this.nudMinICF.Size = new System.Drawing.Size(64, 25);
+            this.nudMinICF.Size = new System.Drawing.Size(104, 35);
             this.nudMinICF.TabIndex = 6;
             this.nudMinICF.Value = new decimal(new int[] {
             85,
@@ -214,15 +208,15 @@
             // 
             // nudMaxACFdesc
             // 
-            this.nudMaxACFdesc.Location = new System.Drawing.Point(9, 41);
-            this.nudMaxACFdesc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudMaxACFdesc.Location = new System.Drawing.Point(15, 66);
+            this.nudMaxACFdesc.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nudMaxACFdesc.Maximum = new decimal(new int[] {
             50,
             0,
             0,
             0});
             this.nudMaxACFdesc.Name = "nudMaxACFdesc";
-            this.nudMaxACFdesc.Size = new System.Drawing.Size(98, 25);
+            this.nudMaxACFdesc.Size = new System.Drawing.Size(159, 35);
             this.nudMaxACFdesc.TabIndex = 5;
             this.nudMaxACFdesc.Value = new decimal(new int[] {
             4,
@@ -239,8 +233,8 @@
             0,
             0,
             131072});
-            this.nudMinACF.Location = new System.Drawing.Point(153, 41);
-            this.nudMinACF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudMinACF.Location = new System.Drawing.Point(249, 66);
+            this.nudMinACF.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nudMinACF.Maximum = new decimal(new int[] {
             1,
             0,
@@ -252,7 +246,7 @@
             0,
             65536});
             this.nudMinACF.Name = "nudMinACF";
-            this.nudMinACF.Size = new System.Drawing.Size(64, 25);
+            this.nudMinACF.Size = new System.Drawing.Size(104, 35);
             this.nudMinACF.TabIndex = 4;
             this.nudMinACF.Value = new decimal(new int[] {
             96,
@@ -269,11 +263,11 @@
             this.groupBox3.Controls.Add(this.nudMinDefinition);
             this.groupBox3.Controls.Add(this.nudMinContourArea);
             this.groupBox3.Controls.Add(this.nudMinContourLength);
-            this.groupBox3.Location = new System.Drawing.Point(7, 240);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Location = new System.Drawing.Point(11, 384);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(292, 129);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox3.Size = new System.Drawing.Size(474, 206);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contour filtration";
@@ -281,43 +275,46 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(144, 31);
+            this.label3.Location = new System.Drawing.Point(234, 50);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 15);
+            this.label3.Size = new System.Drawing.Size(192, 24);
             this.label3.TabIndex = 11;
             this.label3.Text = "Min. contour area";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 31);
+            this.label2.Location = new System.Drawing.Point(11, 50);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 15);
+            this.label2.Size = new System.Drawing.Size(209, 24);
             this.label2.TabIndex = 10;
             this.label2.Text = "Min. contour length";
             // 
             // cbNoiseFilter
             // 
             this.cbNoiseFilter.AutoSize = true;
-            this.cbNoiseFilter.Location = new System.Drawing.Point(9, 85);
-            this.cbNoiseFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbNoiseFilter.Location = new System.Drawing.Point(15, 136);
+            this.cbNoiseFilter.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.cbNoiseFilter.Name = "cbNoiseFilter";
-            this.cbNoiseFilter.Size = new System.Drawing.Size(107, 27);
+            this.cbNoiseFilter.Size = new System.Drawing.Size(150, 28);
             this.cbNoiseFilter.TabIndex = 2;
             this.cbNoiseFilter.Text = "Noise filter";
             this.cbNoiseFilter.UseVisualStyleBackColor = true;
+            this.cbNoiseFilter.CheckedChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
             // nudMinDefinition
             // 
-            this.nudMinDefinition.Location = new System.Drawing.Point(117, 84);
-            this.nudMinDefinition.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudMinDefinition.Location = new System.Drawing.Point(190, 134);
+            this.nudMinDefinition.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nudMinDefinition.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.nudMinDefinition.Name = "nudMinDefinition";
-            this.nudMinDefinition.Size = new System.Drawing.Size(91, 25);
+            this.nudMinDefinition.Size = new System.Drawing.Size(148, 35);
             this.nudMinDefinition.TabIndex = 9;
             this.nudMinDefinition.Value = new decimal(new int[] {
             50,
@@ -328,15 +325,15 @@
             // 
             // nudMinContourArea
             // 
-            this.nudMinContourArea.Location = new System.Drawing.Point(146, 50);
-            this.nudMinContourArea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudMinContourArea.Location = new System.Drawing.Point(237, 80);
+            this.nudMinContourArea.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nudMinContourArea.Maximum = new decimal(new int[] {
             400,
             0,
             0,
             0});
             this.nudMinContourArea.Name = "nudMinContourArea";
-            this.nudMinContourArea.Size = new System.Drawing.Size(91, 25);
+            this.nudMinContourArea.Size = new System.Drawing.Size(148, 35);
             this.nudMinContourArea.TabIndex = 8;
             this.nudMinContourArea.Value = new decimal(new int[] {
             10,
@@ -347,15 +344,15 @@
             // 
             // nudMinContourLength
             // 
-            this.nudMinContourLength.Location = new System.Drawing.Point(9, 50);
-            this.nudMinContourLength.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudMinContourLength.Location = new System.Drawing.Point(15, 80);
+            this.nudMinContourLength.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nudMinContourLength.Maximum = new decimal(new int[] {
             400,
             0,
             0,
             0});
             this.nudMinContourLength.Name = "nudMinContourLength";
-            this.nudMinContourLength.Size = new System.Drawing.Size(110, 25);
+            this.nudMinContourLength.Size = new System.Drawing.Size(179, 35);
             this.nudMinContourLength.TabIndex = 7;
             this.nudMinContourLength.Value = new decimal(new int[] {
             15,
@@ -368,11 +365,11 @@
             // 
             this.groupBox2.Controls.Add(this.cbShowBinarized);
             this.groupBox2.Controls.Add(this.cbShowContours);
-            this.groupBox2.Location = new System.Drawing.Point(7, 142);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Location = new System.Drawing.Point(11, 227);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(292, 90);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox2.Size = new System.Drawing.Size(474, 144);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View";
@@ -380,10 +377,10 @@
             // cbShowBinarized
             // 
             this.cbShowBinarized.AutoSize = true;
-            this.cbShowBinarized.Location = new System.Drawing.Point(7, 53);
-            this.cbShowBinarized.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbShowBinarized.Location = new System.Drawing.Point(11, 85);
+            this.cbShowBinarized.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.cbShowBinarized.Name = "cbShowBinarized";
-            this.cbShowBinarized.Size = new System.Drawing.Size(139, 27);
+            this.cbShowBinarized.Size = new System.Drawing.Size(199, 28);
             this.cbShowBinarized.TabIndex = 5;
             this.cbShowBinarized.Text = "Show binarized";
             this.cbShowBinarized.UseVisualStyleBackColor = true;
@@ -391,10 +388,10 @@
             // cbShowContours
             // 
             this.cbShowContours.AutoSize = true;
-            this.cbShowContours.Location = new System.Drawing.Point(7, 26);
-            this.cbShowContours.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbShowContours.Location = new System.Drawing.Point(11, 42);
+            this.cbShowContours.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.cbShowContours.Name = "cbShowContours";
-            this.cbShowContours.Size = new System.Drawing.Size(139, 27);
+            this.cbShowContours.Size = new System.Drawing.Size(200, 28);
             this.cbShowContours.TabIndex = 4;
             this.cbShowContours.Text = "Show contours";
             this.cbShowContours.UseVisualStyleBackColor = true;
@@ -406,11 +403,11 @@
             this.groupBox1.Controls.Add(this.nudAdaptiveThBlockSize);
             this.groupBox1.Controls.Add(this.cbBlur);
             this.groupBox1.Controls.Add(this.cbAutoContrast);
-            this.groupBox1.Location = new System.Drawing.Point(5, 16);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(8, 26);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(294, 119);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBox1.Size = new System.Drawing.Size(478, 190);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Source";
@@ -418,10 +415,10 @@
             // cbAdaptiveNoiseFilter
             // 
             this.cbAdaptiveNoiseFilter.AutoSize = true;
-            this.cbAdaptiveNoiseFilter.Location = new System.Drawing.Point(141, 77);
-            this.cbAdaptiveNoiseFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbAdaptiveNoiseFilter.Location = new System.Drawing.Point(229, 123);
+            this.cbAdaptiveNoiseFilter.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.cbAdaptiveNoiseFilter.Name = "cbAdaptiveNoiseFilter";
-            this.cbAdaptiveNoiseFilter.Size = new System.Drawing.Size(107, 27);
+            this.cbAdaptiveNoiseFilter.Size = new System.Drawing.Size(150, 28);
             this.cbAdaptiveNoiseFilter.TabIndex = 5;
             this.cbAdaptiveNoiseFilter.Text = "Noise filter";
             this.cbAdaptiveNoiseFilter.UseVisualStyleBackColor = true;
@@ -430,18 +427,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 61);
+            this.label1.Location = new System.Drawing.Point(10, 98);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 15);
+            this.label1.Size = new System.Drawing.Size(313, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "Adaptive threshold block size";
             // 
             // nudAdaptiveThBlockSize
             // 
-            this.nudAdaptiveThBlockSize.Location = new System.Drawing.Point(9, 80);
-            this.nudAdaptiveThBlockSize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudAdaptiveThBlockSize.Location = new System.Drawing.Point(15, 128);
+            this.nudAdaptiveThBlockSize.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.nudAdaptiveThBlockSize.Name = "nudAdaptiveThBlockSize";
-            this.nudAdaptiveThBlockSize.Size = new System.Drawing.Size(91, 25);
+            this.nudAdaptiveThBlockSize.Size = new System.Drawing.Size(148, 35);
             this.nudAdaptiveThBlockSize.TabIndex = 3;
             this.nudAdaptiveThBlockSize.Value = new decimal(new int[] {
             4,
@@ -453,10 +451,10 @@
             // cbBlur
             // 
             this.cbBlur.AutoSize = true;
-            this.cbBlur.Location = new System.Drawing.Point(141, 26);
-            this.cbBlur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbBlur.Location = new System.Drawing.Point(229, 42);
+            this.cbBlur.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.cbBlur.Name = "cbBlur";
-            this.cbBlur.Size = new System.Drawing.Size(64, 27);
+            this.cbBlur.Size = new System.Drawing.Size(79, 28);
             this.cbBlur.TabIndex = 1;
             this.cbBlur.Text = "Blur";
             this.cbBlur.UseVisualStyleBackColor = true;
@@ -465,30 +463,76 @@
             // cbAutoContrast
             // 
             this.cbAutoContrast.AutoSize = true;
-            this.cbAutoContrast.Location = new System.Drawing.Point(8, 26);
-            this.cbAutoContrast.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbAutoContrast.Location = new System.Drawing.Point(13, 42);
+            this.cbAutoContrast.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.cbAutoContrast.Name = "cbAutoContrast";
-            this.cbAutoContrast.Size = new System.Drawing.Size(127, 27);
+            this.cbAutoContrast.Size = new System.Drawing.Size(184, 28);
             this.cbAutoContrast.TabIndex = 0;
             this.cbAutoContrast.Text = "Auto contrast";
             this.cbAutoContrast.UseVisualStyleBackColor = true;
             this.cbAutoContrast.CheckedChanged += new System.EventHandler(this.cbAutoContrast_CheckedChanged);
             // 
+            // ibSample
+            // 
+            this.ibSample.Location = new System.Drawing.Point(660, 0);
+            this.ibSample.Margin = new System.Windows.Forms.Padding(0);
+            this.ibSample.MaximumSize = new System.Drawing.Size(650, 870);
+            this.ibSample.MinimumSize = new System.Drawing.Size(650, 870);
+            this.ibSample.Name = "ibSample";
+            this.ibSample.Size = new System.Drawing.Size(650, 870);
+            this.ibSample.TabIndex = 3;
+            this.ibSample.TabStop = false;
+            this.ibSample.Paint += new System.Windows.Forms.PaintEventHandler(this.ibSample_Paint);
+            // 
+            // ibMain
+            // 
+            this.ibMain.Location = new System.Drawing.Point(0, 0);
+            this.ibMain.Margin = new System.Windows.Forms.Padding(0);
+            this.ibMain.MaximumSize = new System.Drawing.Size(650, 870);
+            this.ibMain.MinimumSize = new System.Drawing.Size(650, 870);
+            this.ibMain.Name = "ibMain";
+            this.ibMain.Size = new System.Drawing.Size(650, 870);
+            this.ibMain.TabIndex = 2;
+            this.ibMain.TabStop = false;
+            this.ibMain.Paint += new System.Windows.Forms.PaintEventHandler(this.ibMain_Paint);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(11, 896);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(225, 54);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(260, 896);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(225, 54);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Process";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1127, 569);
+            this.ClientSize = new System.Drawing.Size(1834, 949);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.imageBox2);
+            this.Controls.Add(this.ibSample);
             this.Controls.Add(this.ibMain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.MaximumSize = new System.Drawing.Size(1860, 1020);
+            this.MinimumSize = new System.Drawing.Size(1860, 1020);
             this.Name = "MainView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BoneAge";
-            ((System.ComponentModel.ISupportInitialize)(this.ibMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -507,6 +551,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdaptiveThBlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ibSample)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ibMain)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -514,7 +560,7 @@
         #endregion
 
         private Emgu.CV.UI.ImageBox ibMain;
-        private Emgu.CV.UI.ImageBox imageBox2;
+        private Emgu.CV.UI.ImageBox ibSample;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -542,5 +588,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label lbRecognized;
         private System.Windows.Forms.Label lbContoursCount;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

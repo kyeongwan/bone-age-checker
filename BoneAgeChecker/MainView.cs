@@ -7,6 +7,9 @@ using Emgu.CV.Structure;
 
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using ContourAnalysisNS;
+using System.Reflection;
+using System.Resources;
 
 namespace BoneAgeChecker
 {
@@ -19,7 +22,8 @@ namespace BoneAgeChecker
         Dictionary<string, Image> AugmentedRealityImages = new Dictionary<string, Image>();
         List<Rectangle> userRectangle = new List<Rectangle>();
         DateTime birthday;
-        String age;
+        int age;
+        int sampleAge;
         bool showAngle;
         String templateFile;
 
@@ -40,20 +44,28 @@ namespace BoneAgeChecker
             this.gender = gender;
             this.birthday = birthday;
 
-            if(DateTime.Now.Month > birthday.Month)
-                age = DateTime.Now.Year - birthday.Year + "y";
-            else if(DateTime.Now.Month == birthday.Month)
-            {
-                if(DateTime.Now.Day >= birthday.Day)
-                    age = DateTime.Now.Year - birthday.Year + "y";
-                else
-                    age = DateTime.Now.Year - birthday.Year - 1 + "y";
-            }
-            else
-                age = DateTime.Now.Year - birthday.Year - 1 + "y";
+            this.Height = 960;
+            this.Width = 1860;
 
-           
-           
+            sampleAge = calcAge();
+            age = calcAge();
+
+            if (sampleAge == 3)
+                    sampleAge = 4;
+                else if (sampleAge > 20)
+                sampleAge = 19;
+            
+
+            // 가져올 아이콘 이름
+            string iconName = string.Format("m{0}y", sampleAge);
+            // 현재 실행 중인 어셈블리를 구해서
+            Assembly thisAssembly = Assembly.GetExecutingAssembly();
+            // 리소스 관리자를 생성하고
+            ResourceManager rm = new ResourceManager("BoneAgeChecker.Properties.Resources", thisAssembly);
+
+            ibSample.Image = new Image<Bgr, byte>((Bitmap) rm.GetObject(iconName));
+
+
             System.Diagnostics.Trace.WriteLine(name + " / " + gender);
 
             frame = userFrame;
@@ -75,6 +87,24 @@ namespace BoneAgeChecker
             //
             Application.Idle += new EventHandler(Application_Idle);
 
+        }
+
+        int calcAge()
+        {
+            int age;
+            if (DateTime.Now.Month > birthday.Month)
+                age = DateTime.Now.Year - birthday.Year;
+            else if (DateTime.Now.Month == birthday.Month)
+            {
+                if (DateTime.Now.Day >= birthday.Day)
+                    age = DateTime.Now.Year - birthday.Year;
+                else
+                    age = DateTime.Now.Year - birthday.Year - 1;
+            }
+            else
+                age = DateTime.Now.Year - birthday.Year - 1;
+
+            return age;
         }
      
 
@@ -108,13 +138,20 @@ namespace BoneAgeChecker
             }
         }
 
+        private void ibSample_Paint(object sender, PaintEventArgs e)
+        {
+            Font font = new Font(Font.FontFamily, 24);//16
+            e.Graphics.DrawString("Sample Image (" + sampleAge + "y)", new Font(Font.FontFamily, 16), Brushes.Yellow, new PointF(1, 1));
+
+        }
+
         private void ibMain_Paint(object sender, PaintEventArgs e)
         {
             if (frame == null) return;
 
             Font font = new Font(Font.FontFamily, 24);//16
 
-            e.Graphics.DrawString(name + "(" + age + ")", new Font(Font.FontFamily, 16), Brushes.Yellow, new PointF(1, 1));
+            e.Graphics.DrawString(name + "(" + age + "y)", new Font(Font.FontFamily, 16), Brushes.Yellow, new PointF(1, 1));
                 
 
             Brush bgBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));
@@ -141,8 +178,8 @@ namespace BoneAgeChecker
                     if (showAngle)
                         text += string.Format("\r\nangle={0:000}°\r\nscale={1:0.0}", 180 * found.angle / Math.PI, found.scale);
                     e.Graphics.DrawRectangle(borderPen, foundRect);
-                    e.Graphics.DrawString(text, font, bgBrush, new PointF(p1.X + 1 - font.Height / 3, p1.Y + 1 - font.Height));
-                    e.Graphics.DrawString(text, font, foreBrush, new PointF(p1.X - font.Height / 3, p1.Y - font.Height));
+                    //e.Graphics.DrawString(text, font, bgBrush, new PointF(p1.X + 1 - font.Height / 3, p1.Y + 1 - font.Height));
+                    //e.Graphics.DrawString(text, font, foreBrush, new PointF(p1.X - font.Height / 3, p1.Y - font.Height));
                 }
            
            
@@ -228,7 +265,19 @@ namespace BoneAgeChecker
                 MessageBox.Show(ex.Message);
             }
         }
- 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            InitView initView = new InitView();
+            initView.Owner = this;
+            initView.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
