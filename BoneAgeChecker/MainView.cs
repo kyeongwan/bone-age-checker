@@ -18,16 +18,21 @@ namespace BoneAgeChecker
 {
     public partial class MainView : Form
     {
+        String name;
+        int gender;
         Image<Bgr, Byte> frame;
         ImageProcessor processor;
         Dictionary<string, Image> AugmentedRealityImages = new Dictionary<string, Image>();
         List<Rectangle> userRectangle = new List<Rectangle>();
+        DateTime birthday;
+        String age;
+
 
 
         bool showAngle;
         string templateFile;
         //   Image<Bgr, Byte> userFrame;
-        public MainView(Image<Bgr, Byte> userFrame)
+        public MainView(Image<Bgr, Byte> userFrame, String name, int gender, DateTime birthday)
         {/*
             InitializeComponent();
 
@@ -38,6 +43,26 @@ namespace BoneAgeChecker
             InitializeComponent();
             //create image preocessor
             processor = new ImageProcessor();
+
+            this.name = name;
+            this.gender = gender;
+            this.birthday = birthday;
+
+            if(DateTime.Now.Month > birthday.Month)
+                age = DateTime.Now.Year - birthday.Year + "y";
+            else if(DateTime.Now.Month == birthday.Month)
+            {
+                if(DateTime.Now.Day >= birthday.Day)
+                    age = DateTime.Now.Year - birthday.Year + "y";
+                else
+                    age = DateTime.Now.Year - birthday.Year - 1 + "y";
+            }
+            else
+                age = DateTime.Now.Year - birthday.Year - 1 + "y";
+
+           
+           
+            System.Diagnostics.Trace.WriteLine(name + " / " + gender);
 
             frame = userFrame;
             ibMain.Image = userFrame;
@@ -59,61 +84,7 @@ namespace BoneAgeChecker
             Application.Idle += new EventHandler(Application_Idle);
 
         }
-        /*
-        private void StartCapture()
-        {
-            try
-            {
-                _capture = new Capture();
-                ApplyCamSettings();
-            }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-      
-
-        private void ApplyCamSettings()
-        {
-            try
-            {
-                _capture.SetCaptureProperty(Emgu.CV.CvEnum.CAP_PROP.CV_CAP_PROP_FRAME_WIDTH, camWidth);
-                _capture.SetCaptureProperty(Emgu.CV.CvEnum.CAP_PROP.CV_CAP_PROP_FRAME_HEIGHT, camHeight);
-           //     cbCamResolution.Text = camWidth + "x" + camHeight;
-            }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-          */
-
-        private void LoadTemplates(string fileName)
-        {
-            try
-            {
-                using (FileStream fs = new FileStream(fileName, FileMode.Open))
-                    processor.templates = (Templates)new BinaryFormatter().Deserialize(fs);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void SaveTemplates(string fileName)
-        {
-            try
-            {
-                using (FileStream fs = new FileStream(fileName, FileMode.Create))
-                    new BinaryFormatter().Serialize(fs, processor.templates);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+     
 
         void Application_Idle(object sender, EventArgs e)
         {
@@ -133,6 +104,11 @@ namespace BoneAgeChecker
                     ibMain.Image = processor.binarizedFrame;
                 else
                     ibMain.Image = frame;
+
+                if (processor.contours != null)
+                    lbContoursCount.Text = "Total Contours: " + processor.contours.Count;
+                if (processor.foundTemplates != null)
+                    lbRecognized.Text = "Recognized Contours: " + processor.foundTemplates.Count;
             }
             catch (Exception ex)
             {
@@ -146,7 +122,8 @@ namespace BoneAgeChecker
 
             Font font = new Font(Font.FontFamily, 24);//16
 
-            e.Graphics.DrawString("수정", new Font(Font.FontFamily, 16), Brushes.Yellow, new PointF(1, 1));
+            e.Graphics.DrawString(name + "(" + age + ")", new Font(Font.FontFamily, 16), Brushes.Yellow, new PointF(1, 1));
+                
 
             Brush bgBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));
             Brush foreBrush = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
@@ -207,11 +184,11 @@ namespace BoneAgeChecker
             try
             {
                 processor.equalizeHist = cbAutoContrast.Checked;
-                showAngle = cbShowAngle.Checked;
+                showAngle = false;
                 //   captureFromCam = cbCaptureFromCam.Checked;
                 //   btLoadImage.Enabled = !captureFromCam;
                 //   cbCamResolution.Enabled = captureFromCam;
-                processor.finder.maxRotateAngle = cbAllowAngleMore45.Checked ? Math.PI : Math.PI / 4;
+                processor.finder.maxRotateAngle =  Math.PI / 4;
                 processor.minContourArea = (int)nudMinContourArea.Value;
                 processor.minContourLength = (int)nudMinContourLength.Value;
                 processor.finder.maxACFDescriptorDeviation = (int)nudMaxACFdesc.Value;
@@ -245,99 +222,7 @@ namespace BoneAgeChecker
                 MessageBox.Show(ex.Message);
             }
         }
-        /*
-        private void btLoadImage_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Image|*.bmp;*.png;*.jpg;*.jpeg";
-            if (ofd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-                try
-                {
-                    frame = new Image<Bgr, byte>((Bitmap)Bitmap.FromFile(ofd.FileName));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-        }
-        */
-        private void btCreateTemplate_Click(object sender, EventArgs e)
-        {
-            //  if (frame != null)
-            //     new ShowContoursForm(processor.templates, processor.samples, frame).ShowDialog();
-        }
-
-        private void btNewTemplates_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Do you want to create new template database?", "Create new template database", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                processor.templates.Clear();
-        }
-
-        private void btOpenTemplates_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Templates(*.bin)|*.bin";
-            if (ofd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-            {
-                templateFile = ofd.FileName;
-                LoadTemplates(templateFile);
-            }
-        }
-
-        private void btSaveTemplates_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Templates(*.bin)|*.bin";
-            if (sfd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-            {
-                templateFile = sfd.FileName;
-                SaveTemplates(templateFile);
-            }
-        }
-        /*
-        private void btTemplateEditor_Click(object sender, EventArgs e)
-        {
-            new TemplateEditor(processor.templates).Show();
-        }
-
-        private void btAutoGenerate_Click(object sender, EventArgs e)
-        {
-            new AutoGenerateForm(processor).ShowDialog();
-        }
-
-    */
-
-
-
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void groupBox1_Enter_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbAutoContrast_CheckedChanged_1(object sender, EventArgs e)
-        {
-            ApplySettings();
-        }
-
-        private void ibMain_Click(object sender, EventArgs e)
-        {
-            MouseEventArgs eM = (MouseEventArgs)e;
-            System.Console.WriteLine(string.Format("X: {0} Y: {1}", eM.X, eM.Y));
-            userRectangle.Add(new Rectangle(eM.X, eM.Y, 100, 100));
-        }
-
-        private void ibMain_MouseUp(object sender, MouseEventArgs e)
-        {
-            
-            System.Console.WriteLine(string.Format("X: {0} Y: {1}", e.X, e.Y));
-        }
+ 
     }
 }
 

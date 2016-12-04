@@ -8,7 +8,8 @@ namespace BoneAgeChecker
 {
     public partial class InitView : Form
     {
-
+        String name;
+        int gender = 0;
         Image<Bgr, Byte> iframe;
         public InitView()
         {
@@ -43,13 +44,39 @@ namespace BoneAgeChecker
                 MessageBoxIcon.Exclamation,
                 MessageBoxDefaultButton.Button1);
             }
+            else if(tbName.Text == "")
+            {
+                MessageBox.Show("Please insert patient's name.",
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
+            }
+            else if(gender == 0)
+            {
+                MessageBox.Show("Please check patient's gender.",
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
+            }
             else
             {
                 this.Visible = false;
-                MainView mainView = new MainView(iframe);
+                MainView mainView = new MainView(iframe, tbName.Text, gender, dataTimePickerBirthday.Value);
                 mainView.Owner = this;
                 mainView.Show();
             }
+        }
+
+        private void rbtnGenderMale_CheckedChanged(object sender, EventArgs e)
+        {
+            gender = 1;
+        }
+
+        private void rbtnGenderFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            gender = 2;
         }
     }
 }
