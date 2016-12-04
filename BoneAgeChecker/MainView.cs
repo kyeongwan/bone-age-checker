@@ -16,17 +16,18 @@ using System.IO;
 
 namespace BoneAgeChecker
 {
-    public partial class Form2 : Form
+    public partial class MainView : Form
     {
         Image<Bgr, Byte> frame;
         ImageProcessor processor;
         Dictionary<string, Image> AugmentedRealityImages = new Dictionary<string, Image>();
+        List<Rectangle> userRectangle = new List<Rectangle>();
 
 
         bool showAngle;
         string templateFile;
         //   Image<Bgr, Byte> userFrame;
-        public Form2(Image<Bgr, Byte> userFrame)
+        public MainView(Image<Bgr, Byte> userFrame)
         {/*
             InitializeComponent();
 
@@ -174,6 +175,8 @@ namespace BoneAgeChecker
                     e.Graphics.DrawString(text, font, bgBrush, new PointF(p1.X + 1 - font.Height / 3, p1.Y + 1 - font.Height));
                     e.Graphics.DrawString(text, font, foreBrush, new PointF(p1.X - font.Height / 3, p1.Y - font.Height));
                 }
+           
+           
         }
 
         private void DrawAugmentedReality(FoundTemplateDesc found, Graphics gr)
@@ -321,6 +324,19 @@ namespace BoneAgeChecker
         private void cbAutoContrast_CheckedChanged_1(object sender, EventArgs e)
         {
             ApplySettings();
+        }
+
+        private void ibMain_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs eM = (MouseEventArgs)e;
+            System.Console.WriteLine(string.Format("X: {0} Y: {1}", eM.X, eM.Y));
+            userRectangle.Add(new Rectangle(eM.X, eM.Y, 100, 100));
+        }
+
+        private void ibMain_MouseUp(object sender, MouseEventArgs e)
+        {
+            
+            System.Console.WriteLine(string.Format("X: {0} Y: {1}", e.X, e.Y));
         }
     }
 }

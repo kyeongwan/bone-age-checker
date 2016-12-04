@@ -1,6 +1,6 @@
 ﻿namespace BoneAgeChecker
 {
-    partial class Form2
+    partial class MainView
     {
         /// <summary>
         /// Required designer variable.
@@ -74,11 +74,13 @@
             this.SuspendLayout();
             // 
             // ibMain
+            // 
             this.ibMain.Location = new System.Drawing.Point(1, 0);
             this.ibMain.Name = "ibMain";
             this.ibMain.Size = new System.Drawing.Size(237, 439);
             this.ibMain.TabIndex = 2;
             this.ibMain.TabStop = false;
+            this.ibMain.Click += new System.EventHandler(this.ibMain_Click);
             this.ibMain.Paint += new System.Windows.Forms.PaintEventHandler(this.ibMain_Paint);
             // 
             // imageBox2
@@ -121,17 +123,16 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(104, 58);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Min. ICF";
-
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 58);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 12);
+            this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Min. ACF";
             // 
@@ -140,7 +141,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(176, 12);
+            this.label4.Size = new System.Drawing.Size(192, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Max. ACF descriptor deviation";
             // 
@@ -225,7 +226,7 @@
             this.cbAllowAngleMore45.AutoSize = true;
             this.cbAllowAngleMore45.Location = new System.Drawing.Point(5, 100);
             this.cbAllowAngleMore45.Name = "cbAllowAngleMore45";
-            this.cbAllowAngleMore45.Size = new System.Drawing.Size(125, 16);
+            this.cbAllowAngleMore45.Size = new System.Drawing.Size(137, 17);
             this.cbAllowAngleMore45.TabIndex = 1;
             this.cbAllowAngleMore45.Text = "Allow angles > 45";
             this.cbAllowAngleMore45.UseVisualStyleBackColor = true;
@@ -251,7 +252,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(126, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 12);
+            this.label3.Size = new System.Drawing.Size(118, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "Min. contour area";
             // 
@@ -260,7 +261,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 12);
+            this.label2.Size = new System.Drawing.Size(127, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Min. contour length";
             // 
@@ -269,7 +270,7 @@
             this.cbNoiseFilter.AutoSize = true;
             this.cbNoiseFilter.Location = new System.Drawing.Point(8, 68);
             this.cbNoiseFilter.Name = "cbNoiseFilter";
-            this.cbNoiseFilter.Size = new System.Drawing.Size(84, 16);
+            this.cbNoiseFilter.Size = new System.Drawing.Size(94, 17);
             this.cbNoiseFilter.TabIndex = 2;
             this.cbNoiseFilter.Text = "Noise filter";
             this.cbNoiseFilter.UseVisualStyleBackColor = true;
@@ -345,7 +346,7 @@
             this.cbShowBinarized.AutoSize = true;
             this.cbShowBinarized.Location = new System.Drawing.Point(6, 64);
             this.cbShowBinarized.Name = "cbShowBinarized";
-            this.cbShowBinarized.Size = new System.Drawing.Size(112, 16);
+            this.cbShowBinarized.Size = new System.Drawing.Size(126, 17);
             this.cbShowBinarized.TabIndex = 5;
             this.cbShowBinarized.Text = "Show binarized";
             this.cbShowBinarized.UseVisualStyleBackColor = true;
@@ -355,7 +356,7 @@
             this.cbShowContours.AutoSize = true;
             this.cbShowContours.Location = new System.Drawing.Point(5, 42);
             this.cbShowContours.Name = "cbShowContours";
-            this.cbShowContours.Size = new System.Drawing.Size(109, 16);
+            this.cbShowContours.Size = new System.Drawing.Size(124, 17);
             this.cbShowContours.TabIndex = 4;
             this.cbShowContours.Text = "Show contours";
             this.cbShowContours.UseVisualStyleBackColor = true;
@@ -365,7 +366,7 @@
             this.cbShowAngle.AutoSize = true;
             this.cbShowAngle.Location = new System.Drawing.Point(6, 20);
             this.cbShowAngle.Name = "cbShowAngle";
-            this.cbShowAngle.Size = new System.Drawing.Size(98, 16);
+            this.cbShowAngle.Size = new System.Drawing.Size(111, 17);
             this.cbShowAngle.TabIndex = 3;
             this.cbShowAngle.Text = "Show angles";
             this.cbShowAngle.UseVisualStyleBackColor = true;
@@ -391,7 +392,7 @@
             this.cbAdaptiveNoiseFilter.AutoSize = true;
             this.cbAdaptiveNoiseFilter.Location = new System.Drawing.Point(108, 65);
             this.cbAdaptiveNoiseFilter.Name = "cbAdaptiveNoiseFilter";
-            this.cbAdaptiveNoiseFilter.Size = new System.Drawing.Size(84, 16);
+            this.cbAdaptiveNoiseFilter.Size = new System.Drawing.Size(94, 17);
             this.cbAdaptiveNoiseFilter.TabIndex = 5;
             this.cbAdaptiveNoiseFilter.Text = "Noise filter";
             this.cbAdaptiveNoiseFilter.UseVisualStyleBackColor = true;
@@ -402,7 +403,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(5, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 12);
+            this.label1.Size = new System.Drawing.Size(189, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Adaptive threshold block size";
             // 
@@ -424,7 +425,7 @@
             this.cbBlur.AutoSize = true;
             this.cbBlur.Location = new System.Drawing.Point(108, 21);
             this.cbBlur.Name = "cbBlur";
-            this.cbBlur.Size = new System.Drawing.Size(46, 16);
+            this.cbBlur.Size = new System.Drawing.Size(54, 17);
             this.cbBlur.TabIndex = 1;
             this.cbBlur.Text = "Blur";
             this.cbBlur.UseVisualStyleBackColor = true;
@@ -435,7 +436,7 @@
             this.cbAutoContrast.AutoSize = true;
             this.cbAutoContrast.Location = new System.Drawing.Point(7, 21);
             this.cbAutoContrast.Name = "cbAutoContrast";
-            this.cbAutoContrast.Size = new System.Drawing.Size(98, 16);
+            this.cbAutoContrast.Size = new System.Drawing.Size(111, 17);
             this.cbAutoContrast.TabIndex = 0;
             this.cbAutoContrast.Text = "Auto contrast";
             this.cbAutoContrast.UseVisualStyleBackColor = true;
