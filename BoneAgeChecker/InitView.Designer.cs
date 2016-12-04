@@ -47,66 +47,59 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(126, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(205, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 15);
+            this.label1.Size = new System.Drawing.Size(0, 24);
             this.label1.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 150);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(101, 240);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 15);
+            this.label2.Size = new System.Drawing.Size(67, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(138, 147);
-            this.tbName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbName.Location = new System.Drawing.Point(224, 235);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(196, 25);
+            this.tbName.Size = new System.Drawing.Size(316, 35);
             this.tbName.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 193);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(101, 309);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 15);
+            this.label3.Size = new System.Drawing.Size(63, 24);
             this.label3.TabIndex = 3;
             this.label3.Text = "Bone";
             // 
             // dataTimePickerBirthday
             // 
-            this.dataTimePickerBirthday.Location = new System.Drawing.Point(138, 186);
-            this.dataTimePickerBirthday.Margin = new System.Windows.Forms.Padding(2);
+            this.dataTimePickerBirthday.Location = new System.Drawing.Point(224, 298);
             this.dataTimePickerBirthday.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dataTimePickerBirthday.Name = "dataTimePickerBirthday";
-            this.dataTimePickerBirthday.Size = new System.Drawing.Size(196, 25);
+            this.dataTimePickerBirthday.Size = new System.Drawing.Size(316, 35);
             this.dataTimePickerBirthday.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(62, 235);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(101, 376);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 15);
+            this.label4.Size = new System.Drawing.Size(84, 24);
             this.label4.TabIndex = 5;
             this.label4.Text = "Gender";
             // 
             // rbtnGenderMale
             // 
             this.rbtnGenderMale.AutoSize = true;
-            this.rbtnGenderMale.Location = new System.Drawing.Point(138, 233);
-            this.rbtnGenderMale.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnGenderMale.Location = new System.Drawing.Point(224, 373);
             this.rbtnGenderMale.Name = "rbtnGenderMale";
-            this.rbtnGenderMale.Size = new System.Drawing.Size(69, 26);
+            this.rbtnGenderMale.Size = new System.Drawing.Size(88, 28);
             this.rbtnGenderMale.TabIndex = 6;
             this.rbtnGenderMale.Text = "Male";
             this.rbtnGenderMale.UseVisualStyleBackColor = true;
@@ -115,10 +108,9 @@
             // rbtnGenderFemale
             // 
             this.rbtnGenderFemale.AutoSize = true;
-            this.rbtnGenderFemale.Location = new System.Drawing.Point(250, 233);
-            this.rbtnGenderFemale.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnGenderFemale.Location = new System.Drawing.Point(406, 373);
             this.rbtnGenderFemale.Name = "rbtnGenderFemale";
-            this.rbtnGenderFemale.Size = new System.Drawing.Size(84, 26);
+            this.rbtnGenderFemale.Size = new System.Drawing.Size(114, 28);
             this.rbtnGenderFemale.TabIndex = 7;
             this.rbtnGenderFemale.Text = "Female";
             this.rbtnGenderFemale.UseVisualStyleBackColor = true;
@@ -126,10 +118,9 @@
             // 
             // xRayImagePath
             // 
-            this.xRayImagePath.Location = new System.Drawing.Point(65, 272);
-            this.xRayImagePath.Margin = new System.Windows.Forms.Padding(2);
+            this.xRayImagePath.Location = new System.Drawing.Point(106, 435);
             this.xRayImagePath.Name = "xRayImagePath";
-            this.xRayImagePath.Size = new System.Drawing.Size(191, 25);
+            this.xRayImagePath.Size = new System.Drawing.Size(308, 35);
             this.xRayImagePath.TabIndex = 8;
             // 
             // btnLoadImage
@@ -139,10 +130,9 @@
             this.btnLoadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadImage.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLoadImage.ForeColor = System.Drawing.Color.White;
-            this.btnLoadImage.Location = new System.Drawing.Point(260, 270);
-            this.btnLoadImage.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLoadImage.Location = new System.Drawing.Point(422, 432);
             this.btnLoadImage.Name = "btnLoadImage";
-            this.btnLoadImage.Size = new System.Drawing.Size(74, 30);
+            this.btnLoadImage.Size = new System.Drawing.Size(120, 48);
             this.btnLoadImage.TabIndex = 9;
             this.btnLoadImage.Text = "Load";
             this.btnLoadImage.UseVisualStyleBackColor = false;
@@ -154,10 +144,9 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("돋움", 9F);
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(129, 341);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubmit.Location = new System.Drawing.Point(210, 546);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(144, 37);
+            this.btnSubmit.Size = new System.Drawing.Size(234, 59);
             this.btnSubmit.TabIndex = 10;
             this.btnSubmit.Text = "Next";
             this.btnSubmit.UseVisualStyleBackColor = false;
@@ -167,18 +156,19 @@
             // 
             this.pictureBox1.Image = global::BoneAgeChecker.Properties.Resources.title;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(408, 113);
+            this.pictureBox1.Size = new System.Drawing.Size(663, 181);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
             // InitView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(394, 401);
+            this.ClientSize = new System.Drawing.Size(640, 642);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnLoadImage);
@@ -192,10 +182,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(420, 472);
-            this.MinimumSize = new System.Drawing.Size(420, 472);
+            this.MaximumSize = new System.Drawing.Size(666, 713);
+            this.MinimumSize = new System.Drawing.Size(666, 713);
             this.Name = "InitView";
             this.Text = "Bone Age";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

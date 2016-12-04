@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
 
-using BoneAgeChecker;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -26,11 +20,9 @@ namespace BoneAgeChecker
         List<Rectangle> userRectangle = new List<Rectangle>();
         DateTime birthday;
         String age;
-
-
-
         bool showAngle;
-        string templateFile;
+        String templateFile;
+
         //   Image<Bgr, Byte> userFrame;
         public MainView(Image<Bgr, Byte> userFrame, String name, int gender, DateTime birthday)
         {/*
@@ -66,9 +58,9 @@ namespace BoneAgeChecker
 
             frame = userFrame;
             ibMain.Image = userFrame;
-            //load default templates
-            // templateFile = AppDomain.CurrentDomain.BaseDirectory + "\\Tahoma.bin";
-            // LoadTemplates(templateFile);
+
+            templateFile = AppDomain.CurrentDomain.BaseDirectory + "\\bone.bin";
+            LoadTemplates(templateFile);
             //start capture from cam
             // StartCapture();
             //apply settings
@@ -154,6 +146,20 @@ namespace BoneAgeChecker
                 }
            
            
+        }
+
+        private void LoadTemplates(string fileName)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(fileName, FileMode.Open))
+                    processor.templates.AddRange((Templates)new BinaryFormatter().Deserialize(fs));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void DrawAugmentedReality(FoundTemplateDesc found, Graphics gr)
